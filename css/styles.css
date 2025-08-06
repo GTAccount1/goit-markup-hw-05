@@ -724,7 +724,6 @@ header .logo {
   padding-left: 38px;
   outline: transparent;
   transition: border-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
-  border-color: var(--iris);
 }
 
 .form-icon {
@@ -733,11 +732,13 @@ header .logo {
   top: 50%;
   transform: translateY(-50%);
   transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
-  fill: var(--iris);
+  fill: var(--light-slate);
 }
 
-.form-label:focus-within .form-icon {
+.form-input:focus + .form-icon,
+.form-input:focus {
   fill: var(--iris);
+  border-color: var(--iris);
 }
 
 .form-textarea {
@@ -756,7 +757,7 @@ header .logo {
   transition: border-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.form-textarea:focus .form-textarea {
+.form-textarea:focus {
   border-color: var(--iris);
 }
 
@@ -773,10 +774,9 @@ header .logo {
   color: var(--light-slate);
 }
 
-input:checked ~ span.checkbox-text {
-  background-color: var(--ocean);
-  border: none;
-  fill: var(--cloud);
+.form-icon-checkbox {
+  fill: inherit;
+  pointer-events: none;
 }
 
 .checkbox-text {
@@ -791,10 +791,17 @@ input:checked ~ span.checkbox-text {
   align-items: center;
   justify-content: center;
   fill: transparent;
+  background-color: transparent;
 }
 
 .checkbox-link {
   color: var(--iris);
+}
+
+input[type="checkbox"]:checked + .form-label-checkbox .checkbox-text {
+  background-color: var(--ocean); /* #404bbf */
+  border: none; /* видаляємо рамку */
+  fill: var(--cloud); /* #f4f4fd */
 }
 
 .form-button {
